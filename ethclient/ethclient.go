@@ -191,12 +191,7 @@ func (ec *Client) getBlock(ctx context.Context, method string, args ...interface
 		}
 		txs[i] = tx.tx
 	}
-	block := types.NewBlockWithHeader(head).WithBody(
-		types.Body{
-			Transactions: txs,
-			Uncles:       uncles,
-			Withdrawals:  body.Withdrawals,
-		})
+	block := types.NewBlockWithHeader(head).WithBody(txs, uncles).WithWithdrawals(body.Withdrawals)
 	block.StoreHash(body.Hash)
 	return block, nil
 }
