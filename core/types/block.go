@@ -306,11 +306,11 @@ func CopyHeader(h *Header) *Header {
 	}
 	return &cpy
 }
+
 // StoreHash stores the hash of the block in the block itself.
 func (b *Block) StoreHash(hash common.Hash) {
-	b.hash.Store(&hash)
+	b.hash.Store(hash)
 }
-
 
 // DecodeRLP decodes a block from RLP.
 func (b *Block) DecodeRLP(s *rlp.Stream) error {
